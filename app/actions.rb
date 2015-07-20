@@ -9,12 +9,6 @@ get '/messages' do
   erb :'messages/index'
 end
 
-# get '/messages/:id' do
-#   @message = Message.find params[:id]
-#   @all_messages = Message.where("author = '#{@message.author}' AND id != #{@message.id}")
-#   erb :'messages/show'
-# end
-
 post '/messages' do
   @messages = Message.all
   @message = Message.new(
