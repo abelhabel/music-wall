@@ -1,50 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Music Wall</title>
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="public/stylesheets/application.css">
-</head>
+<div class="jumbotron">
+  <h1>Music Wall</h1> 
+</div>
+<div class="error_message"><% if @message %>
 
+  <% @message.errors.full_messages.each do |m| %>
 
-<body>
-  <div class="jumbotron">
-    <h1>Music Wall</h1> 
-  </div>
-  
-  <div id="addSong">
-    <form method="POST" action="/messages">
-      <div>
-        <label>Song Title:</label>
-        <input type="text" name="title" value="<%= @message && @message.title %>">
-      </div>
-      <div>
-        <label>Author:</label>
-        <input type="text" name="author" value="<%= @message && @message.author %>">
-      </div>
-      <div>
-        <label>URL:</label>
-        <input type="text" name="url" value="<%= @message && @message.url %>">
-      </div>
-      <div>
-        <input type="submit" value="Submit">
-      </div>
-    </form>
-  </div>
-  <div id="messages_container">
-    <!-- Here comes all messages -->
-    <% @messages.each do |message| %>
-      <div class="message">
-        <p>
-          <%= message.author %>
-          <p class="message_title"><%= message.title %> <br></p>
-          <a href="<%= message.url if message.url%>"><%= message.url %></a> <br>
-          <span class="time"><%= message.created_at %></span>
-        </p>
-      </div>
-    <% end %>
-  </div>
-</body>
-</html>
+   <span class="error_message">Please fix: <%= m %></span>
 
+   <% end %>
+   <% end %>
+</div>
+
+<div id="addSong">
+  <form method="POST" action="/messages">
+    <div>
+      <label>Song Title:</label>
+      <input type="text" name="title" value="<%= @message && @message.title %>">
+    </div>
+    <div>
+      <label>Author:</label>
+      <input type="text" name="author" value="<%= @message && @message.author %>">
+    </div>
+    <div>
+      <label>URL:</label>
+      <input type="text" name="url" value="<%= @message && @message.url %>">
+    </div>
+    <div>
+      <input type="submit" value="Contribute">
+    </div>
+  </form>
+</div>
+<div id="messages_container">
+  <!-- Here comes all messages -->
+  <% @messages.each do |message| %>
+    <div class="message">
+      <p>
+        <%= message.author %>
+        <p class="message_title"><%= message.title %> <br></p>
+        <a href="<%= message.url if message.url%>">Go to link!</a> <br>
+        <span class="time"><%= message.created_at %></span>
+      </p>
+    </div>
+  <% end %>
+</div>

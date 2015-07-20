@@ -1,7 +1,20 @@
+body {
+  font-family: Courier;
+}
+
 h1 {
   border-bottom: 3px solid black;
   background-color: #83C0E1;
   text-align: center;
+}
+.error_message {
+  display: block;
+  background-color: gray;
+  max-width: 250px;
+  margin: auto;
+  text-align: center;
+  border: 2px dotted red;
+  color: lightgray;
 }
 #messages_container {
   text-align: center;
@@ -15,6 +28,7 @@ h1 {
   margin: 5px;
   padding-left: 5px;
   padding-right: 5px;
+  border: 6px dotted black;
 }
 
 .message a:link{
@@ -43,4 +57,16 @@ h1 {
 }
 form div {
   display: inline-block;
+}
+
+form input[type='submit'] {
+  text-transform: uppercase;
+  border: 4px dotted black;
+}
+form input[type='text'] {
+  background-color: #C5D1B2;
+  border: none;
+}
+form label {
+  text-transform: uppercase;
 }

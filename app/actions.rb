@@ -4,11 +4,6 @@ get '/' do
   erb :index
 end
 
-get '/messages' do
-  @messages = Message.all
-  erb :'messages/index'
-end
-
 post '/messages' do
   @messages = Message.all
   @message = Message.new(
@@ -19,6 +14,6 @@ post '/messages' do
   if @message.save
     redirect ''
   else
-    erb :''
+    erb :index
   end
 end
