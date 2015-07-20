@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>Music Wall</h1> 
+  <h1>Music Wall <%= session[:user].user_name if session[:user] %></h1> 
 </div>
 <div class="error_message"><% if @message %>
 
@@ -9,6 +9,19 @@
 
    <% end %>
    <% end %>
+</div>
+
+<div id="login_box">
+  <% if session[:user] %>
+    Logged IN as <%= session[:user].user_name%>
+  <% else %>
+    <form method="POST" action="/login_logout">
+      <input type="text" name="user_name" placeholder="user name">
+      <input type="password" name="password" placeholder="password">
+      <input type="submit" value="Login">
+
+    </form>
+  <% end %>
 </div>
 
 <div id="addSong">
@@ -32,14 +45,16 @@
 </div>
 <div id="messages_container">
   <!-- Here comes all messages -->
-  <% @messages.each do |message| %>
-    <div class="message">
-      <p>
-        <%= message.author %>
-        <p class="message_title"><%= message.title %> <br></p>
-        <a href="<%= message.url if message.url%>">Go to link!</a> <br>
-        <span class="time"><%= message.created_at %></span>
-      </p>
-    </div>
+  <% if @messages %>
+    <% @messages.each do |message| %>
+      <div class="message">
+        <p>
+          <%= message.author %>
+          <p class="message_title"><%= message.title %> <br></p>
+          <a href="<%= message.url if message.url%>">Go to link!</a> <br>
+          <span class="time"><%= message.created_at %></span>
+        </p>
+      </div>
+    <% end %>
   <% end %>
 </div>
