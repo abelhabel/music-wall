@@ -1,0 +1,11 @@
+<% @messages.each do |message| %>
+  <div class="message">
+    <p>
+      <a href="/messages/<%= message.id %>"><%= message.author %> <br></a> 
+      <p class="message_content"><%= message.content %> <br></p>
+      <a href="<%= message.url if message.url%>"><%= message.url %></a> <br>
+      <span class="time"><%= message.created_at %></span>
+    </p>
+  </div>
+<% end %>
+
