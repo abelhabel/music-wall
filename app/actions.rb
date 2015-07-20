@@ -3,7 +3,6 @@ enable :sessions
 
 get '/' do
   @messages = Message.all
-  @existing_user = @current_user
   erb :index
 end
 
@@ -12,7 +11,8 @@ post '/messages' do
   @message = Message.new(
     title: params[:title],
     author:  params[:author],
-    url: params[:url]   
+    url: params[:url] ,
+    user_id: session[:user].id  
   )
   if @message.save
     redirect ''
@@ -21,7 +21,7 @@ post '/messages' do
   end
 end
 
-post '/login_logout' do
+post '/login' do
   @messages = Message.all
   @existing_user = User.find_by( user_name: params[:user_name] )
   # @existing_user = @existing_user ? 'true' : 'false'
@@ -32,5 +32,11 @@ post '/login_logout' do
   else
     session[:user] = User.create( user_name: params[:user_name], password: params[:password] )
   end
+  erb :index
+end
+
+post '/logout' do
+  @messages = Message.all
+  session[:user] = nil
   erb :index
 end

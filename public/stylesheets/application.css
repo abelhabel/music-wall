@@ -19,7 +19,6 @@ h1 {
   max-width: 250px;
   margin: auto;
   text-align: center;
-  border: 2px dotted red;
   color: lightgray;
 }
 #messages_container {
