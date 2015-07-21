@@ -67,6 +67,13 @@
           <% if session[:user] %>
             <form id="review_form" method="POST" action="/reviews">
               <textarea name="content" placeholder="Write review here."></textarea>
+              <select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
               <input type="hidden" name="message_id" value="<%= message.id %>">
               <input type="submit" value="Review" class="review_button">
             </form>
@@ -74,7 +81,8 @@
               <% Review.where(message_id: message.id).each do |rev| %>
               <% if session[:user].id == rev.user_id %>
                 <form method="POST" action="/remove_review"> 
-                <input type="hidden" name="review_id" value="<%= rev.id %>">
+                  <input type="hidden" name="review_id" value="<%= rev.id %>">
+                  
                   <input type="submit" value="REMOVE">
                 </form>
               <% else %>

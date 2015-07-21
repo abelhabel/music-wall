@@ -66,7 +66,7 @@ post '/reviews' do
   # session[:test] = params['content']
   review_exist = Review.exists?(user_id: session[:user].id, message_id: params[:message_id])
   if !review_exist
-    Review.create(user_id: session[:user].id, message_id: params[:message_id], content: params[:content])
+    Review.create(user_id: session[:user].id, message_id: params[:message_id], content: params[:content], rating: params[:rating])
   end
   redirect '/'
   erb :index
