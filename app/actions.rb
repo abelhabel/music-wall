@@ -72,5 +72,20 @@ post '/reviews' do
   erb :index
 end
 
+post '/remove_review' do
+  Review.destroy(params[:review_id])
+  redirect '/'
+  erb :index
+end
+
+
+
+
+
+
+
+
+
+
 
 

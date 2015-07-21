@@ -72,7 +72,15 @@
             </form>
             <div id="review_list">
               <% Review.where(message_id: message.id).each do |rev| %>
-                <span>BY: <%= User.find(rev.user_id).user_name %></span><p><%= rev.content %></p>
+              <% if session[:user].id == rev.user_id %>
+                <form method="POST" action="/remove_review"> 
+                <input type="hidden" name="review_id" value="<%= rev.id %>">
+                  <input type="submit" value="REMOVE">
+                </form>
+              <% else %>
+                <span>BY: <%= User.find(rev.user_id).user_name %></span>
+              <% end %>
+                <p><%= rev.content %></p>
               <% end %>
             </div>
           <% end %>
