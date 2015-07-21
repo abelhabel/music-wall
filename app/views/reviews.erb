@@ -1,0 +1,21 @@
+<% if session[:user] %>
+  Logged in as <%= session[:user].user_name%>
+  <form method="POST" action="/logout">
+    <input type='submit' value='Logout'>
+  </form>
+<% else %>
+  <%= @login_failure_message %>
+  <form method="POST" action="/login">
+    <input type="text" name="user_name" placeholder="user name">
+    <input type="password" name="password" placeholder="password">
+    <input type="submit" value="Login/Sign up">
+
+  </form>
+<% end %>
+
+<div id="review_container">
+  <form id="review_form">
+  <textarea form="review_form"></textarea>
+  </form>
+</div>
+Reviews page

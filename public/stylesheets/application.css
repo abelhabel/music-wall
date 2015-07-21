@@ -30,33 +30,50 @@ h1 {
   vertical-align: top;
   background-color: lightblue;
   width: 240px;
-  height: 120px;
+  max-height: 200px;
   margin: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border: 6px dotted black;
+  overflow: hidden;
+}
+.message:hover {
+  max-height: 360px;
+  overflow-y: auto;
+}
+.message a:link{
+  color: gray;
+  font-size: 80%;
 }
 .upvote {
   position: absolute;
   width: 30px;
   height: 24px;
-  top:50%;
+  /*top:50%;*/
   right:0px;
-  transform: translate(0, -50%);
+  /*transform: translate(0, -50%);*/
+}
+.upvote_text {
+  color: white;
 }
 .upvote img
 {
   width: 24px;
   height: 24px;
 }
-.upvote_text {
-  color: white;
+.review_button {
+  width: 100%;
+  background-color: #A49FC7;
+  cursor: default;
 }
-.message a:link{
-  color: gray;
-  font-size: 80%;
+#review_container {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
 }
-
+#review_form input {
+  display: block;
+}
 .time{
   color: white;
   font-size: 70%;

@@ -1,1 +1,1 @@
-success:<%= params[:message_id] %>
+success:<%= params[:message_id] %>:<%= Upvote.where(message_id: params[:message_id]).count %>

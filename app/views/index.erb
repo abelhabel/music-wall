@@ -64,6 +64,19 @@
           <p class="message_title"><%= message.title %> <br></p>
           <a href="<%= message.url if message.url%>">Go to link!</a> <br>
           <span class="time"><%= message.created_at %></span>
+          <% if session[:user] %>
+            <form id="review_form" method="POST" action="/reviews">
+              <textarea name="content" placeholder="Write review here."></textarea>
+              <input type="hidden" name="message_id" value="<%= message.id %>">
+              <input type="submit" value="Review" class="review_button">
+            </form>
+            <div id="review_list">
+              <% Review.where(message_id: message.id).each do |rev| %>
+                <span>BY: <%= User.find(rev.user_id).user_name %></span><p><%= rev.content %></p>
+              <% end %>
+            </div>
+          <% end %>
+
         </p>
       </div>
     <% end %>
