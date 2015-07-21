@@ -36,14 +36,21 @@ h1 {
   padding-right: 5px;
   border: 6px dotted black;
 }
-.upvote img
-{
+.upvote {
   position: absolute;
-  width: 24px;
+  width: 30px;
   height: 24px;
   top:50%;
   right:0px;
   transform: translate(0, -50%);
+}
+.upvote img
+{
+  width: 24px;
+  height: 24px;
+}
+.upvote_text {
+  color: white;
 }
 .message a:link{
   color: gray;
