@@ -13,7 +13,7 @@
 
 <div id="login_box">
   <% if session[:user] %>
-    Logged IN as <%= session[:user].user_name%>
+    Logged in as <%= session[:user].user_name%>
     <form method="POST" action="/logout">
       <input type='submit' value='Logout'>
     </form>
@@ -22,7 +22,7 @@
     <form method="POST" action="/login">
       <input type="text" name="user_name" placeholder="user name">
       <input type="password" name="password" placeholder="password">
-      <input type="submit" value="Login">
+      <input type="submit" value="Login/Sign up">
 
     </form>
   <% end %>
