@@ -25,6 +25,7 @@ h1 {
   text-align: center;
 }
 .message{
+  position: relative;
   display: inline-block;
   vertical-align: top;
   background-color: lightblue;
@@ -35,7 +36,15 @@ h1 {
   padding-right: 5px;
   border: 6px dotted black;
 }
-
+.upvote
+{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top:50%;
+  right:0px;
+  transform: translate(0, -50%);
+}
 .message a:link{
   color: gray;
   font-size: 80%;

@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>Music Wall <%= session[:user].user_name if session[:user] %></h1> 
+  <h1>Music Wall <%= session[:message] if session[:message] %></h1> 
 </div>
 <div class="error_message"><% if @message %>
 
@@ -54,6 +54,7 @@
       <div class="message">
         <p>
           <%= message.author %>
+          <img class="upvote" data-id="<%= message.id %>"src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Thumbs-up-icon.png"/>
           <p class="message_title"><%= message.title %> <br></p>
           <a href="<%= message.url if message.url%>">Go to link!</a> <br>
           <span class="time"><%= message.created_at %></span>

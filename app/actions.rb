@@ -32,6 +32,7 @@ post '/login' do
   else
     session[:user] = User.create( user_name: params[:user_name], password: params[:password] )
   end
+  cookies[:jsuser] = session[:user].username
   erb :index
 end
 
@@ -40,3 +41,15 @@ post '/logout' do
   session[:user] = nil
   erb :index
 end
+
+post '/upvote' do
+  if params[:id]
+    message = Message.find(params[:id])
+    message.votes = message.votes || 0
+    message.votes += 1
+    message.save
+  end
+end
+
+
+
