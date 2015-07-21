@@ -30,7 +30,13 @@ post '/login' do
       session[:user] = @existing_user
     end
   else
-    session[:user] = User.create( user_name: params[:user_name], password: params[:password] )
+    user = User.new( user_name: params[:user_name], password: params[:password] )
+    if user.save
+      session[:user] = user
+    else
+      session[:user] = nil
+      @login_failure_message = "Both user name and password have to be provided."
+    end
   end
   erb :index
 end
@@ -44,7 +50,6 @@ end
 post '/upvote' do
   if params[:message_id]
     message = Message.find(params[:message_id])
-    puts "#{message.user_id} and #{session[:user].id}"
     vote_record = Upvote.exists?(user_id: session[:user].id, message_id: params[:message_id])
 
     if !vote_record
