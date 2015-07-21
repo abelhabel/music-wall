@@ -32,7 +32,6 @@ post '/login' do
   else
     session[:user] = User.create( user_name: params[:user_name], password: params[:password] )
   end
-  cookies[:jsuser] = session[:user].username
   erb :index
 end
 
@@ -43,11 +42,17 @@ post '/logout' do
 end
 
 post '/upvote' do
-  if params[:id]
-    message = Message.find(params[:id])
-    message.votes = message.votes || 0
-    message.votes += 1
-    message.save
+  if params[:message_id]
+    message = Message.find(params[:message_id])
+    puts "#{message.user_id} and #{session[:user].id}"
+    vote_record = Upvote.exists?(user_id: session[:user].id, message_id: params[:message_id])
+
+    if !vote_record
+      Upvote.create(user_id: session[:user].id, message_id: params[:message_id])
+      erb :upvote_success, :layout => false
+    else
+      erb :upvote_fail, :layout => false
+    end
   end
 end
 

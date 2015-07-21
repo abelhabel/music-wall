@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  belongs_to :message
+  has_many :messages
 
   validates :user_name, uniqueness: true, presence: true
   validates :password, presence: true
