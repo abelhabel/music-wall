@@ -13,7 +13,7 @@
 
 <div id="login_box">
   <% if session[:user] %>
-    Logged in as <%= session[:user].user_name%>
+    Logged in as: <span class="text-warning text-uppercase"><%= session[:user].user_name%></span>
     <form method="POST" action="/logout">
       <input type='submit' value='Logout'>
     </form>

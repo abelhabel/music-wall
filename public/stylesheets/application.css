@@ -6,6 +6,9 @@ body {
   position: fixed;
   top:0;
   left:0;
+  z-index: 100;
+  background-color: rgba(44,44,212, 0.5);
+  color: white;
 }
 
 h1 {
